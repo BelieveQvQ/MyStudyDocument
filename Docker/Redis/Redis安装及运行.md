@@ -16,7 +16,7 @@ docker pull redis:latest
 
 ```shell
 # 创建目录 -p 使用递归创建
-mkdir /home/tigerhead/docker/redis/data -p
+mkdir /home/t1gerhead/docker/redis/data -p
 # 进入目录创建配置文件文件
 cd /home/tigerhead/docker/redis/
 touch redis.conf
@@ -63,9 +63,12 @@ docker run
 # 在每行代码后面加上 \ 即可美观的运行
 docker run \
 --name myredis -p 6379:6379 \
--v /home/tigerhead/docker/redis/data:/data \
--v /home/tigerhead/docker/redis/conf/redis.conf:/etc/redis/redis.conf \
+-v /home/t1gerhead/docker/redis/data:/data \
+-v /home/t1gerhead/docker/redis/conf/redis.conf:/etc/redis/redis.conf \
+--network my-net \
 -d redis redis-server /etc/redis/redis.conf
+
+docker run --name myredis -p 6379:6379 -v /home/t1gerhead/docker/redis/data:/data -v /home/t1gerhead/docker/redis/conf/redis.conf:/etc/redis/redis.conf --network my-net -d redis redis-server /etc/redis/redis.conf
 ```
 
 ## 第五步,查看Redis运行状态
